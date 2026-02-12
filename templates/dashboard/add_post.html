@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+{% load crispy_forms_tags %}
+     <div class="row">
+        <!--load the sidebar-->
+        {% include 'dashboard/sidebar.html' %}
+
+
+       <!-- Right Sidebar -->
+        <div class="col-md-9">
+            <h2>Add New Post</h2>
+            <form method="POST" action="{% url 'add_post' %}" enctype="multipart/form-data">  <!--enctype is used for file upload and multipart is used for both text and file data-->
+                {% csrf_token %}
+                {{forms|crispy}}
+                <button type="submit" class="btn btn-warning">Add</button>
+            </form>
+            <br>
+        </div>
+            
+
+    </div>
+{% endblock content %}
+    
