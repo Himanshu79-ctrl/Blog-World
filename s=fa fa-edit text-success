@@ -1,0 +1,41 @@
+[33mcommit a37542847ab0d4b0204aa542c006d6c7e0c320ec[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Himanshu79-ctrl <709himanshu@gmail.com>
+Date:   Thu Feb 12 23:08:18 2026 +0530
+
+    Post crud operations/features
+
+[33mcommit fbfb571809581450684238094ec8d6ae8e854104[m
+Author: Himanshu79-ctrl <709himanshu@gmail.com>
+Date:   Tue Feb 10 23:32:26 2026 +0530
+
+    category crud functionality
+
+[33mcommit 929a0d630740e1c105241120a4ff546abe399854[m
+Author: Himanshu79-ctrl <709himanshu@gmail.com>
+Date:   Sat Feb 7 17:54:38 2026 +0530
+
+    registration and login functionality
+
+[33mcommit bb2246b11f39d93379979a79a71d2c27da343d65[m
+Author: Himanshu79-ctrl <709himanshu@gmail.com>
+Date:   Sat Feb 7 16:50:20 2026 +0530
+
+    blogs and search features
+
+[33mcommit f97ad04b9c85f7d1b4809c09a6d37671296d336f[m
+Author: Himanshu79-ctrl <709himanshu@gmail.com>
+Date:   Sun Feb 1 16:24:42 2026 +0530
+
+    posts by category
+
+[33mcommit ea80b9545939d0ab8636b0633500dcb1e78b63b7[m
+Author: Himanshu79-ctrl <709himanshu@gmail.com>
+Date:   Fri Jan 16 23:01:15 2026 +0530
+
+    Blogs app and blog model
+
+[33mcommit 8a824cae62771b4e6e160fe045d8ddff5766843d[m
+Author: Himanshu79-ctrl <709himanshu@gmail.com>
+Date:   Sun Dec 7 19:12:18 2025 +0530
+
+    initialized blog world and created homepage
