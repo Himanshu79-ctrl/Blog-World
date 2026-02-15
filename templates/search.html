@@ -1,24 +1,46 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-     <h3 class="text-uppercase text-warning" style="letter-spacing: 2px;">Search Results for "{{ keyword }}"</h3>
-  <div class="row mb-2">
-    {% if blogs%}
+
+<h4 class="fw-bold mb-4">
+    🔎 Search Results for "{{ keyword }}"
+</h4>
+
+<div class="row g-4">
+
+    {% if blogs %}
         {% for i in blogs %}
             <div class="col-md-6">
-              <div class="card border-0" >
-                <div class="card-body">
-                  <h3><a href="{% url 'blogs' i.slug %}" class="text-dark">{{ i.title }}</a></h3>
-                  <small class="mb-1 text-muted">{{ i.created_at | timesince }} | {{ i.author }}</small>
-                  <p class="card-text">{{ i.short_description|truncatewords:30 }}</p>
+                <div class="card border-0 shadow rounded-4 h-100">
+                    <div class="card-body">
+                        <h5 class="fw-bold">
+                            <a href="{% url 'blogs' i.slug %}"
+                               class="text-decoration-none text-dark">
+                                {{ i.title }}
+                            </a>
+                        </h5>
+
+                        <small class="text-muted">
+                            {{ i.created_at|timesince }} ago • {{ i.author }}
+                        </small>
+
+                        <p class="mt-2">
+                            {{ i.short_description|truncatewords:25 }}
+                        </p>
+                    </div>
                 </div>
-              </div>
             </div>
         {% endfor %}
     {% else %}
-        <h4>No search results available for "{{ keyword }}".</h4>
+        <div class="col-12">
+            <div class="card border-0 shadow rounded-4 p-4 text-center">
+                <h5 class="text-muted">
+                    No search results found for "{{ keyword }}"
+                </h5>
+            </div>
+        </div>
     {% endif %}
-  </div>
-{% endblock content %}
-    
+
+</div>
+
+{% endblock %}

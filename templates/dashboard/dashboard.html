@@ -1,45 +1,60 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-    <div class="row">
-        <!--Load the sidebar-->
-        {% include 'dashboard/sidebar.html' %}
 
+<div class="row g-4">
 
-        <!--Right Sidebar-->
+    <!-- Sidebar -->
+    {% include 'dashboard/sidebar.html' %}
 
-       <!-- Right Sidebar -->
-        <div class="col-md-9">
-            <span>Logged in as: {{ user }}</span>
-            <div class="row">
-                <!-- Card 1 -->
-                <div class="col-md-6">
-                    <div class="card border-default mb-3">
-                        <div class="card-header text-center text-uppercase font-weight-bold">
-                            All Categories
-                        </div>
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">{{ category_count }}</h5>
-                        </div>
-                    </div>
-                </div>
-            
-                <!-- Card 2 -->
-                <div class="col-md-6">
-                    <div class="card border-default mb-3">
-                        <div class="card-header text-center text-uppercase font-weight-bold">
-                            All Posts
-                        </div>
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">{{ blogs_count }}</h5>
-                        </div>
-                    </div>
-                </div>
-            
+    <!-- Main Content -->
+    <div class="col-md-9">
+
+        <!-- Welcome Card -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4 bg-white">
+            <div class="card-body">
+                <h5 class="fw-semibold mb-1">
+                    Welcome back, <span class="text-primary">{{ user }}</span>
+                </h5>
+                <small class="text-muted">Here is your dashboard overview</small>
             </div>
         </div>
 
+        <!-- Stats Cards -->
+        <div class="row g-4">
+
+            <!-- Categories -->
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm rounded-4 h-100 bg-white hover-card">
+                    <div class="card-body text-center p-4">
+                        <h6 class="text-uppercase text-muted mb-2">
+                            Total Categories
+                        </h6>
+                        <h2 class="fw-bold text-dark mb-0">
+                            {{ category_count }}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Posts -->
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm rounded-4 h-100 bg-white hover-card">
+                    <div class="card-body text-center p-4">
+                        <h6 class="text-uppercase text-muted mb-2">
+                            Total Posts
+                        </h6>
+                        <h2 class="fw-bold text-dark mb-0">
+                            {{ blogs_count }}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-{% endblock content %}
-    
+
+</div>
+
+{% endblock %}

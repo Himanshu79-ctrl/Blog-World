@@ -1,11 +1,42 @@
- <div class="col-md-3">
-    <div class="nav flex-column nav-pills bg-light" aria-orientation="vertical">
-        <a href="{% url 'dashboard' %}" class="nav-link text-dark {% if request.resolver_match.url_name == 'dashboard' %}bg-warning{% endif %}">Dashboard</a>
-        {% if perms.auth.view_user %}
-        <a href="{% url 'users' %}" class="nav-link text-dark {% if request.resolver_match.url_name == 'users' %}bg-warning{% endif %}">Users</a>
-        {% endif %}
-        <a href="{% url 'categories' %}" class="nav-link text-dark {% if request.resolver_match.url_name == 'categories' %}bg-warning{% endif %}">Category</a>
-        <a href="{% url 'posts' %}" class="nav-link text-dark {% if request.resolver_match.url_name == 'posts' %}bg-warning{% endif %}">Posts</a>
-        <a href="{% url 'logout' %}" class="nav-link text-dark">Logout</a>
+<div class="col-md-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100">
+        <div class="card-body p-3">
+
+            <h6 class="text-muted fw-semibold mb-3">MENU</h6>
+
+            <div class="nav flex-column">
+
+                <a href="{% url 'dashboard' %}"
+                   class="sidebar-link {% if request.resolver_match.url_name == 'dashboard' %}active-link{% endif %}">
+                    Dashboard
+                </a>
+
+                {% if perms.auth.view_user %}
+                <a href="{% url 'users' %}"
+                   class="sidebar-link {% if request.resolver_match.url_name == 'users' %}active-link{% endif %}">
+                    Users
+                </a>
+                {% endif %}
+
+                <a href="{% url 'categories' %}"
+                   class="sidebar-link {% if request.resolver_match.url_name == 'categories' %}active-link{% endif %}">
+                    Categories
+                </a>
+
+                <a href="{% url 'posts' %}"
+                   class="sidebar-link {% if request.resolver_match.url_name == 'posts' %}active-link{% endif %}">
+                    Posts
+                </a>
+
+                <hr>
+
+                <a href="{% url 'logout' %}"
+                   class="sidebar-link text-danger">
+                    Logout
+                </a>
+
+            </div>
+
+        </div>
     </div>
 </div>

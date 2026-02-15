@@ -1,33 +1,57 @@
 {% extends 'base.html' %}
-
-
+{% load crispy_forms_tags %}
 
 {% block content %}
-{% load crispy_forms_tags %}
-     <div class="row">
-        <!--load the sidebar-->
-        {% include 'dashboard/sidebar.html' %}
 
+<div class="row g-4">
 
-       <!-- Right Sidebar -->
-        <div class="col-md-9">
-            {% if perms.auth.add_user %}
-            <h2>Edit User</h2>
-            <form method="POST" action="">  <!--enctype is used for file upload and multipart is used for both text and file data-->
-                {% csrf_token %}
-                {{forms|crispy}}
-                <button type="submit" class="btn btn-warning">Add</button>
-            </form>
-            <br>
-            {% else %}
-            <div class="alert alert-danger">
-                You don't have permission to view this page. Please contact the administrator.
+    {% include 'dashboard/sidebar.html' %}
+
+    <div class="col-md-9">
+
+        {% if perms.auth.add_user %}
+
+        <div class="card border-0 shadow-sm rounded-4">
+
+            <div class="card-body p-5">
+
+                <div class="mb-4">
+                    <h5 class="fw-semibold">Edit User</h5>
+                    <hr class="mt-3">
+                </div>
+
+                <form method="POST"
+                      action=""
+                      class="pt-2">
+
+                    {% csrf_token %}
+
+                    <div class="mb-4">
+                        {{ forms|crispy }}
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-dark rounded-pill px-4 py-2">
+                        Update User
+                    </button>
+
+                </form>
+
             </div>
-            {% endif %}
-                
+
         </div>
-            
+
+        {% else %}
+
+        <div class="alert alert-danger rounded-4 shadow-sm">
+            You don't have permission to view this page.
+            Please contact the administrator.
+        </div>
+
+        {% endif %}
 
     </div>
-{% endblock content %}
-    
+
+</div>
+
+{% endblock %}

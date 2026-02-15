@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Blog, Category
+from .models import Blog, Category, Comment
 from django.db.models import Q  #for search functionality, jaise ',' and ke jaise behave karta hai , isliye ham 'or' functionality ke liye Q ka use karte hain
-# Create your views here.
+
+
 
 def posts_by_category(request, category_id):
     #fetch the post that belongs to the category witt the id category_id
@@ -20,8 +21,20 @@ def posts_by_category(request, category_id):
 
 def blogs(request, slug):
     single_blog = get_object_or_404(Blog, slug=slug, status='Published')
+    if request.method == 'POST':
+        comment = Comment()
+        comment.user = request.user
+        comment.blog = single_blog
+        comment.comment = request.POST.get('comment')
+        comment.save()
+        return redirect('blogs', slug=slug)
+    #comments
+    comments = Comment.objects.filter(blog=single_blog)
+    comment_count = comments.count()
     context = {
         'single_blog': single_blog,
+        'comments': comments,
+        'comment_count': comment_count,
     }
     return render(request, 'blogs.html', context)
 
@@ -33,3 +46,5 @@ def search(request):
         'keyword': keyword,
     }
     return render(request, 'search.html', context)
+
+

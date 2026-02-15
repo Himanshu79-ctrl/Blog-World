@@ -1,26 +1,43 @@
 {% extends 'base.html' %}
-
-
+{% load crispy_forms_tags %}
 
 {% block content %}
-{% load crispy_forms_tags %}
-     <div class="row">
-        <!--load the sidebar-->
+
+<div class="row g-4 mt-4">
+
+    <!-- Left Sidebar -->
         {% include 'dashboard/sidebar.html' %}
+    
 
+    <!-- Right Side Content -->
+    <div class="col-md-9">
 
-       <!-- Right Sidebar -->
-        <div class="col-md-9">
-            <h2>Edit Blog Post</h2>
-            <form method="POST" action="{% url 'edit_post' post.id %}" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{forms|crispy}}
-                <button type="submit" class="btn btn-warning">Update</button>
-            </form>
-            <br>
+        <div class="card shadow-sm border-0 rounded-4">
+            <div class="card-body p-5">
+
+                <!-- Page Title -->
+                <div class="mb-4">
+                    <h4 class="fw-bold text-primary">Edit Blog Post</h4>
+                    <hr class="mt-3">
+                </div>
+
+                <!-- Form -->
+                <form action="{% url 'edit_post' post.id %}" method="POST" enctype="multipart/form-data" class="pt-2">
+                    {% csrf_token %}
+
+                    <div class="mb-4">
+                        {{ forms|crispy }}
+                    </div>
+
+                    <button type="submit" class="btn btn-dark    rounded-pill px-4 py-2">
+                        Update Post
+                    </button>
+                </form>
+
+            </div>
         </div>
-            
 
     </div>
-{% endblock content %}
-    
+</div>
+
+{% endblock %}
